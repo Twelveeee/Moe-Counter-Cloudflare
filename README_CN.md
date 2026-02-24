@@ -49,7 +49,8 @@ Upstash 模式额外需要：
 - `UPSTASH_REDIS_REST_TOKEN`
 - `COUNTER_PREFIX` (optional, default `moe_count_`)
 
-Cloudflare D1 需要手动创建数据库和绑定数据库
+Cloudflare D1 现在使用 `database_name` 声明绑定（仓库里不提交 `database_id`），Deploy Button / 新版 Wrangler 可自动创建并绑定 `DB`。
+如果你的部署流程不支持自动创建，再在后台手动绑定 `DB` 到 D1 数据库即可。
 
 ## Deploy 1: Vercel + Upstash
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FTwelveeee%2FMoe-Counter-Cloudflare)
@@ -77,9 +78,10 @@ Cloudflare D1 需要手动创建数据库和绑定数据库
 ## Deploy 3: Cloudflare Worker + D1
 [![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2FTwelveeee%2FMoe-Counter-Cloudflare)
 
-1. 创建 D1 数据库。
-
-2. 创建数据表
+1. 点击 Deploy to Cloudflare 创建 Worker。
+2. 在变量里设置 `DB_DRIVER=d1`。
+3. 确认存在名为 `DB` 的 D1 绑定（新版流程会自动创建）。
+4. 创建数据表
 ![alt text](./docs/image/01.png)
 
 
@@ -94,27 +96,18 @@ CREATE TABLE IF NOT EXISTS tb_count (
 
 ```
 
-3. 创建 Workers
 点击 [![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2FTwelveeee%2FMoe-Counter-Cloudflare) 
 
 ![alt text](./docs/image/02.png)
 输入环境变量。点击创建。
 
-
-
-4. 手动绑定 D1 数据库
-
-添加绑定
+如果你的环境里没有自动绑定 `DB`，再手动绑定 D1：
+1. 添加绑定
 ![alt text](./docs/image/03.png)
-
-选择D1 数据库
+2. 选择 D1 数据库
 ![alt text](./docs/image/04.png)
-
-变量名输入DB， d1 databases 选择刚刚创建的数据库
+3. 变量名填 `DB`，`d1 databases` 选择你的数据库
 ![alt text](./docs/image/05.png)
-
-
-5. 在变量里设置 `DB_DRIVER=d1`。
 
 ## 消耗额度
 

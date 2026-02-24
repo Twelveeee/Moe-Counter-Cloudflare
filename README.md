@@ -44,7 +44,8 @@ Required in Upstash mode:
 - `UPSTASH_REDIS_REST_TOKEN`
 - `COUNTER_PREFIX` (optional, default `moe_count_`)
 
-For Cloudflare D1, you must create and bind the database manually.
+For Cloudflare D1, this repo declares a D1 binding by `database_name` (without committing `database_id`), so Deploy Button / modern Wrangler can auto-provision and bind `DB`.
+If auto-provisioning is unavailable in your flow, manually bind `DB` to your D1 database in the dashboard.
 
 ## Deploy 1: Vercel + Upstash
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FTwelveeee%2FMoe-Counter-Cloudflare)
@@ -70,8 +71,10 @@ For Cloudflare D1, you must create and bind the database manually.
 ## Deploy 3: Cloudflare Worker + D1
 [![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2FTwelveeee%2FMoe-Counter-Cloudflare)
 
-1. Create a D1 database.
-2. Create the table.
+1. Click Deploy to Cloudflare and create the Worker.
+2. Set `DB_DRIVER=d1` in variables.
+3. Confirm a D1 binding named `DB` is present (auto-created in modern flows).
+4. Create the table.
 ![alt text](./docs/image/01.png)
 
 Run SQL in terminal:
@@ -84,24 +87,18 @@ CREATE TABLE IF NOT EXISTS tb_count (
 );
 ```
 
-3. Create a Worker.
 Click [![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2FTwelveeee%2FMoe-Counter-Cloudflare)
 
 ![alt text](./docs/image/02.png)
 Fill in environment variables, then click create.
 
-4. Bind the D1 database manually.
-
-Add binding:
+If `DB` is not auto-bound in your environment, bind it manually:
+1. Add binding:
 ![alt text](./docs/image/03.png)
-
-Select D1 database:
+2. Select D1 database:
 ![alt text](./docs/image/04.png)
-
-Set variable name to `DB`, then choose the D1 database you just created:
+3. Set variable name to `DB`, then choose your D1 database:
 ![alt text](./docs/image/05.png)
-
-5. Set `DB_DRIVER=d1` in variables.
 
 ## Usage Quotas
 
