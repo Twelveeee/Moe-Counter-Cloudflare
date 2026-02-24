@@ -3360,6 +3360,68 @@
         "path": "theme/sketch-2/9.png"
       }
     },
+    "umaru": {
+      "0": {
+        "width": 147,
+        "height": 147,
+        "mime": "image/png",
+        "path": "theme/umaru/0.png"
+      },
+      "1": {
+        "width": 143,
+        "height": 148,
+        "mime": "image/png",
+        "path": "theme/umaru/1.png"
+      },
+      "2": {
+        "width": 148,
+        "height": 147,
+        "mime": "image/png",
+        "path": "theme/umaru/2.png"
+      },
+      "3": {
+        "width": 147,
+        "height": 148,
+        "mime": "image/png",
+        "path": "theme/umaru/3.png"
+      },
+      "4": {
+        "width": 148,
+        "height": 147,
+        "mime": "image/png",
+        "path": "theme/umaru/4.png"
+      },
+      "5": {
+        "width": 148,
+        "height": 147,
+        "mime": "image/png",
+        "path": "theme/umaru/5.png"
+      },
+      "6": {
+        "width": 151,
+        "height": 156,
+        "mime": "image/png",
+        "path": "theme/umaru/6.png"
+      },
+      "7": {
+        "width": 147,
+        "height": 156,
+        "mime": "image/png",
+        "path": "theme/umaru/7.png"
+      },
+      "8": {
+        "width": 148,
+        "height": 155,
+        "mime": "image/png",
+        "path": "theme/umaru/8.png"
+      },
+      "9": {
+        "width": 147,
+        "height": 154,
+        "mime": "image/png",
+        "path": "theme/umaru/9.png"
+      }
+    },
     "yousa-ling": {
       "0": {
         "width": 200,
